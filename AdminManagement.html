@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Management</title>
+
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Nhập dữ liệu -->
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <legend style="font-weight: bold">Quản lý nhân viên</legend>
+          <!-- ID -->
+          <div class="form-group">
+            <label for="">ID: </label>
+            <input
+              type="number"
+              required="true"
+              class="form-control"
+              id="ID_ID"
+              value=""
+              placeholder="Enter Id"
+              disabled
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="">Email: </label>
+            <input
+              type="email"
+              required="true"
+              class="form-control"
+              id="Email_ID"
+              value=""
+              placeholder="Enter Email"
+            />
+          </div>
+
+          <!-- Username -->
+          <div class="form-group">
+            <label for="">Username: </label>
+            <input
+              type="text"
+              required="true"
+              class="form-control"
+              id="Username_ID"
+              value=""
+              placeholder="Enter Username"
+            />
+          </div>
+
+          <!-- Fullname -->
+          <div class="form-group">
+            <label for="">Fullname: </label>
+            <input
+              type="text"
+              required="true"
+              class="form-control"
+              id="Fullname_ID"
+              value=""
+              placeholder="Enter Fullname"
+            />
+          </div>
+
+          <!-- Department -->
+          <div class="form-group">
+            <label for="sel1">Select a Department:</label>
+            <select class="form-control" id="Department_ID">
+              <option>--Select a Department--</option>
+              <!-- <option value="1">Accounting</option> -->
+              <!-- <option>Business Development</option>
+              <option>Engineering</option>
+              <option>Human Resources</option>
+              <option>Research and Development</option> -->
+            </select>
+          </div>
+
+          <!-- Position -->
+          <div class="form-group">
+            <label for="sel1">Select a Position:</label>
+            <select class="form-control" id="Position_ID">
+              <option>--Select a Position--</option>
+              <!-- <option>Developer</option>
+              <option>Tester</option>
+              <option>Scrum Master</option>
+              <option>PM</option> -->
+            </select>
+          </div>
+          <!-- Cretate Date -->
+          <div class="form-group">
+            <label for="">Cretate Date: </label>
+            <input
+              type="date"
+              required="true"
+              class="form-control"
+              id="Cretate_Date_ID"
+              value=""
+              disabled
+            />
+          </div>
+
+          <!-- Button -->
+          <div class="form-group">
+            <input
+              type="button"
+              class="btn btn-success"
+              id="save_btn"
+              value="Save"
+            />
+            <input
+              type="button"
+              class="btn btn-warning"
+              id="update_btn"
+              value="Update"
+            />
+            <input
+              type="button"
+              class="btn btn-danger"
+              id="reset_btn"
+              value="Reset"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <input
+            type="search"
+            class="form-control"
+            id="id_Search"
+            value=""
+            placeholder="Search By Email Or Fullname Or Department"
+          />
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <button type="button" class="btn btn-primary" id="id_btn_search">
+            Search
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <!-- Hiển thị kết quả -->
+      <div class="row">
+        <!--  -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>
+                  ID
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`id`)"
+                  ></i>
+                </th>
+                <th>
+                  Email
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`email`)"
+                  ></i>
+                </th>
+                <th>
+                  Username
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`username`)"
+                  ></i>
+                </th>
+                <th>
+                  Fullname
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`fullname`)"
+                  ></i>
+                </th>
+                <th>
+                  Department
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`department`)"
+                  ></i>
+                </th>
+                <th>
+                  Position
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`position`)"
+                  ></i>
+                </th>
+                <th>
+                  Cretate Date
+                  <i
+                    class="fa fa-fw fa-sort"
+                    onclick="handleChangeSort(`createDate`)"
+                  ></i>
+                </th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="result_tb">
+              <!-- 1 -->
+              <!-- <tr>
+                <td>1</td>
+                <td>email1@gmail.com</td>
+                <td>username1</td>
+                <td>fullname1</td>
+                <td>Business Development</td>
+                <td>PM</td>
+                <td>8-4-2005</td>
+                <td>
+                  <button type="button" class="btn btn-warning">Edit</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+              </tr> -->
+              <!-- 2 -->
+              <!-- <tr>
+                <td>1</td>
+                <td>email1@gmail.com</td>
+                <td>username1</td>
+                <td>fullname1</td>
+                <td>Business Development</td>
+                <td>PM</td>
+                <td>8-4-2005</td>
+                <td>
+                  <button type="button" class="btn btn-warning">Edit</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Phân trang -->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="pagination" id="pagination_Id">
+            <!-- <li class="page-item">
+              <a class="page-link" href="#">Previous</a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+          </ul>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+
+    <script type="text/javascript" src="./AdminManagement.js"></script>
+  </body>
+</html>
