@@ -1,26 +1,39 @@
-import { myName } from "./Person";
-
 import Person from "./Person";
+import { Student } from "./Student";
 
-var person1 = new Person();
-person1.id = 1;
-person1.name = "daonq1";
-person1.address = "HN";
+// var person1 = new Person();
+// person1.id = 1;
+// person1.name = "daonq1";
+// person1.address = "HN";
+var person1 = new Person(1, "daonq1", "HN");
 
-var person2 = new Person();
-person2.id = 2;
-person2.name = "daonq2";
-person2.address = "ND";
+// var person2 = new Person();
+// person2.id = 2;
+// person2.name = "daonq2";
+// person2.address = "ND";
+var person2 = new Person(2, "daonq2", "NĐ");
+
 //
+// var person3 = new Person();
+
 console.log("Thông tin của person1: ");
-console.log("ID: ", person1.id);
-console.log("Name: ", person1.name);
-console.log("Address: ", person1.address);
+console.log("ID: ", person1.getId());
+console.log("Name: ", person1.getName());
+console.log("Address: ", person1.getAddress());
 
 console.log("--------------------------------");
 console.log("Thông tin của person2: ");
-console.log("ID: ", person2.id);
-console.log("Name: ", person2.name);
-console.log("Address: ", person2.address);
+console.log("ID: ", person2.getId());
+console.log("Name: ", person2.getName());
+console.log("Address: ", person2.getAddress());
 
-console.log("MyName: ", myName);
+console.log("Sử dụng hàm sayInfo");
+person1.sayInfo();
+person2.sayInfo();
+
+console.log("--------------------------------");
+var student1 = new Student(1, "Student1", "HN", "Railway90", 9);
+var student2 = new Student(2, "Student2", "NĐ", "Railway90", 8);
+
+student1.sayInfoStudent();
+student2.sayInfoStudent();
