@@ -13,7 +13,6 @@ function callAPICheckEmail() {
     } else {
       resolve("Check Email OK!");
     }
-
     //     },
     //     error(jqXHR, textStatus, errorThrown) {
     //         alert("Error when loading data");
@@ -23,10 +22,8 @@ function callAPICheckEmail() {
     //     }
     // });
   });
-
   return promise;
 }
-
 // Check Username
 function callAPICheckUsername() {
   let promise = new Promise(function (resolve, reject) {
@@ -42,7 +39,6 @@ function callAPICheckUsername() {
     } else {
       resolve("Check Username OK!");
     }
-
     //     },
     //     error(jqXHR, textStatus, errorThrown) {
     //         alert("Error when loading data");
@@ -52,10 +48,8 @@ function callAPICheckUsername() {
     //     }
     // });
   });
-
   return promise;
 }
-
 // Create New Account
 function callAPICreateNewAccount() {
   let promise = new Promise(function (resolve, reject) {
@@ -71,7 +65,6 @@ function callAPICreateNewAccount() {
     } else {
       resolve("Tạo không thành công");
     }
-
     //     },
     //     error(jqXHR, textStatus, errorThrown) {
     //         alert("Error when loading data");
@@ -81,10 +74,8 @@ function callAPICreateNewAccount() {
     //     }
     // });
   });
-
   return promise;
 }
-
 // Sử dụng
 // callAPICheckEmail();
 // callAPICheckUsername();
@@ -92,7 +83,6 @@ function callAPICreateNewAccount() {
 callAPICheckEmail()
   .then(function (msg) {
     console.log(msg);
-
     return callAPICheckUsername();
   })
   .then(function (msg) {
