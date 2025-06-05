@@ -1,20 +1,24 @@
 import React, { Component } from "react";
+import TopChildComponent from "./TopChildComponent";
 
 class TopComponent extends Component {
   // Khai báo state click_number
-  // constructor(props) {
-  //   super(props);
-  //   //  Nên khai báo các State ở trong hàm này
-  //   this.state = {
-  //     click_number: 0,
-  //     // myName: "daonq",
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    //  Nên khai báo các State ở trong hàm này
+    this.state = {
+      inputData: "",
+      // click_number: 0,
+      // myName: "daonq",
+    };
+  }
 
   // click_number = 0;
   dataFromTopToBottom = "Something data From Top To Bottom";
   // Khai báo hàm handleClick
   handleClick = () => {
+    console.log("InputData: ", this.state.inputData);
+
     this.props.onGetDataFromTop(this.dataFromTopToBottom);
     // this.setState({
     //   click_number: this.state.click_number + 1,
@@ -23,12 +27,21 @@ class TopComponent extends Component {
     // this.render();
   };
 
+  // Khai báo hàm handleChange
+  handleChange = (event) => {
+    // console.log("Event: ", event.target.value);
+    this.setState({
+      inputData: event.target.value,
+    });
+  };
+
   render() {
     // let dataToTop = this.props.dataToTop;
     // let dataToTop1 = this.props.dataToTop1;
     // let dataToTop2 = this.props.dataToTop2;
     // Destructuring
-    let { dataToTop, dataToTop1, dataToTop2, headingTop } = this.props;
+    let { dataToTop, dataToTop1, dataToTop2, headingTop, dataToTopChild } =
+      this.props;
 
     // console.log("dataToTop: ", dataToTop);
     // console.log("dataToTop1: ", dataToTop1);
@@ -44,12 +57,15 @@ class TopComponent extends Component {
               <div className="panel-body">
                 <div className="row">
                   <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    {/* Ô nhập liệu  */}
                     <input
                       type="text"
                       name="Input_Name"
                       id="input"
                       className="form-control"
                       required="required"
+                      value={this.state.inputData}
+                      onChange={this.handleChange}
                       // value={this.state.click_number}
                     />
                   </div>
@@ -68,6 +84,8 @@ class TopComponent extends Component {
             </div>
           </div>
         </div>
+        {/* TopChild */}
+        <TopChildComponent dataToTopChild={dataToTopChild} />
       </>
     );
   }

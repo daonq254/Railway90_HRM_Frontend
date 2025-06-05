@@ -43,6 +43,8 @@
 import React, { Component } from "react";
 import TopComponent from "./Components/TopComponent";
 import BottomComponent from "./Components/BottomComponent";
+import { DataContext } from "./Context/DataContext";
+import LifeCycle from "./Components/LifeCycle";
 
 class App extends Component {
   //
@@ -69,21 +71,44 @@ class App extends Component {
 
     let dataToTop3 = "VTI Academy From APP To Bottom";
     let headingBottom = "............Component Bottom..............";
+    //
+    let dataToTopChild = "Data from App To TopChild";
+
+    let data1 = "Nam, Xuân, Hồng, ...";
+    let data2 = "A, B, C, D, E, ...";
+    let data3 = "This is data From App to Top_Child";
+    let account = {
+      id: 1,
+      email: "daonq@viettel.com.vn",
+      username: "daonq",
+      fullname: "NguyenDao",
+    };
+
+    let sentObject = {
+      data1: data1,
+      data2: data2,
+      data3: data3,
+      account: account,
+    };
 
     return (
       <>
-        <TopComponent
-          dataToTop={dataToTop}
-          dataToTop1={dataToTop1}
-          dataToTop2={dataToTop2}
-          headingTop={headingTop}
-          onGetDataFromTop={this.getDataFromTop}
-        />
+        {/* <DataContext.Provider value={sentObject}>
+          <TopComponent
+            dataToTop={dataToTop}
+            dataToTop1={dataToTop1}
+            dataToTop2={dataToTop2}
+            headingTop={headingTop}
+            onGetDataFromTop={this.getDataFromTop}
+            dataToTopChild={dataToTopChild}
+          />
+        </DataContext.Provider>
         <BottomComponent
           dataToTop3={dataToTop3}
           headingBottom={headingBottom}
           data={this.state.data}
-        />
+        /> */}
+        <LifeCycle />
       </>
     );
   }
