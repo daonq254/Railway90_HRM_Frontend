@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-function InputForm(props) {
-  let { onHandleCreateNewAccount } = props;
+function InputForm({ listDepartment, listPosition, onHandleCreateNewAccount }) {
+  console.log("listDepartment: ", listDepartment);
+  console.log("listPosition: ", listPosition);
   // Khai báo ra các state để quản lý dữ liệu Form
   let [Email, SetEmail] = useState("");
   let [Username, SetUsername] = useState("");
@@ -30,6 +31,22 @@ function InputForm(props) {
     //
     onHandleCreateNewAccount(accountNew);
   };
+  // Hiển thị cho Department
+  let depItems = listDepartment.map((department, index) => {
+    return (
+      <option value={department.id} key={index}>
+        {department.name}
+      </option>
+    );
+  });
+  // Hiển thị cho Department
+  let posItems = listPosition.map((position, index) => {
+    return (
+      <option value={position.id} key={index}>
+        {position.name}
+      </option>
+    );
+  });
   return (
     <>
       <Form>
@@ -91,11 +108,12 @@ function InputForm(props) {
               SetDepartment(event.target.value);
             }}
           >
-            <option value={"Bán hàng"}>Bán hàng</option>
+            {depItems}
+            {/* <option value={"Bán hàng"}>Bán hàng</option>
             <option value={"Bảo vệ"}>Bảo vệ</option>
             <option value={"Giám đốc"}>Giám đốc</option>
             <option value={"Kỹ thuật"}>Kỹ thuật</option>
-            <option value={"Marketing"}>Marketing</option>
+            <option value={"Marketing"}>Marketing</option> */}
           </Input>
         </FormGroup>
 
@@ -111,10 +129,11 @@ function InputForm(props) {
               SetPostion(event.target.value);
             }}
           >
-            <option value={"Dev"}>Dev</option>
+            {posItems}
+            {/* <option value={"Dev"}>Dev</option>
             <option value={"Test"}>Test</option>
             <option value={"Scrum_Master"}>Scrum_Master</option>
-            <option value={"PM"}>PM</option>
+            <option value={"PM"}>PM</option> */}
           </Input>
         </FormGroup>
       </Form>
