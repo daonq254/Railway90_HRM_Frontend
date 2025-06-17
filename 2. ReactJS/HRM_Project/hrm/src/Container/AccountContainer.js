@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CreateButton from "../Components/Account/CreateButton";
 import ResultForm from "../Components/Account/ResultForm";
 import ModalCreateNewAccount from "../Components/Account/CreateNewAccount/ModalCreateNewAccount";
-import Axios from "axios";
 import { addAccountNewAPI, getListAccount } from "../API/AccountApi";
 import { getListDepartmentAPI } from "../API/DepartmentAPI";
 import { getListPositionAPI } from "../API/PositionAPI";
