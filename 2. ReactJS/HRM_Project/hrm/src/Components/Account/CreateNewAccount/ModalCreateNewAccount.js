@@ -1,15 +1,19 @@
 import React from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import InputForm from "./InputForm";
+import { useSelector } from "react-redux";
 
 function ModalCreateNewAccount(props) {
   let {
-    showForm,
+    // showForm,
     onHandleCloseModal,
     onHandleCreateNewAccount,
     listDepartment,
     listPosition,
   } = props;
+  // Khai báo hook useSelector: hỗ trợ trong việc kết nối lên store redux để lấy state về sử dụng
+  let stateRedux = useSelector((state) => state);
+  let showForm = stateRedux.formReducer.showForm;
 
   // Khai báo hàm xử lý sự kiện khi nhấn nút Close
   let handleCloseModal = () => {

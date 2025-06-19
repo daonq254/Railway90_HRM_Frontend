@@ -1,0 +1,11 @@
+export const SHOW_INPUT_FORM = "SHOW_INPUT_FORM";
+
+export const CLOSE_INPUT_FORM = "CLOSE_INPUT_FORM";
+
+export const ADD_ACCOUNT = "ADD_ACCOUNT";
+
+export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
+
+export const UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
+
+export const GETALL_ACCOUNT = "GETALL_ACCOUNT";

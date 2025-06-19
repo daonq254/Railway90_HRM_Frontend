@@ -5,25 +5,34 @@ import ModalCreateNewAccount from "../Components/Account/CreateNewAccount/ModalC
 import { addAccountNewAPI, getListAccount } from "../API/AccountApi";
 import { getListDepartmentAPI } from "../API/DepartmentAPI";
 import { getListPositionAPI } from "../API/PositionAPI";
+import { useDispatch } from "react-redux";
+import {
+  actionCloseInputForm,
+  actionShowInputForm,
+} from "../Redux/Action/FormAction";
 
 function AccountContainer(props) {
   // Khai baos state showForm quản lý việc ẩn hiện của modal
-  let [showForm, setShowForm] = useState(false);
+  // let [showForm, setShowForm] = useState(false);
   // State lưu dữ danh sách Account
   let [listAccount, setListAccount] = useState([]);
   // Khai báo State để quản lý danh sách Account trên hệ thống
   let [listDepartment, setListDepartment] = useState([]);
   // Khai báo State để quản lý danh sách Account trên hệ thống
   let [listPosition, setListPosition] = useState([]);
+  // Khai báo hook useDispatch
+  let dispatchRedux = useDispatch();
 
   // Khai báo hàm callback khi người dùng nhấn vào nút Create New Account
   let onHandleCreateButtuon = () => {
-    setShowForm(true);
+    // setShowForm(true);
+    dispatchRedux(actionShowInputForm());
   };
 
   // Hàm Callback xử lý khi nhấn nút Close ở Modal
   let onHandleCloseModal = () => {
-    setShowForm(false);
+    // setShowForm(false);
+    dispatchRedux(actionCloseInputForm());
   };
   //
   let fetchListAccount = () => {
@@ -53,7 +62,8 @@ function AccountContainer(props) {
       fetchListAccount();
     });
 
-    setShowForm(false);
+    // setShowForm(false);
+    dispatchRedux(actionCloseInputForm());
   };
 
   // Load dữ liệu từ localStorage
@@ -93,7 +103,7 @@ function AccountContainer(props) {
     <>
       <CreateButton onHandleCreateButtuon={onHandleCreateButtuon} />
       <ModalCreateNewAccount
-        showForm={showForm}
+        // showForm={showForm}
         onHandleCloseModal={onHandleCloseModal}
         onHandleCreateNewAccount={onHandleCreateNewAccount}
         listDepartment={listDepartment}
